@@ -1,1 +1,57 @@
-SIEM deployment and Wazuh configuration evidence.
+# SIEM Deployment Evidence
+
+## Overview
+
+This section contains evidence of the deployment and configuration of the Wazuh Security Information and Event Management (SIEM) environment used for this project.
+
+## Objective
+
+The objective of this phase was to establish a centralized security monitoring platform capable of receiving, processing, and analyzing security telemetry from multiple endpoints.
+
+## Environment
+
+The SOC lab included:
+
+- Wazuh SIEM
+- Wazuh Manager
+- Wazuh Dashboard
+- Wazuh Indexer
+- Debian Linux
+- Windows Server 2025
+- Kali Linux
+- Wazuh endpoint agents
+- Virtualized lab networking
+
+## Deployment
+
+Wazuh was deployed as the primary SIEM platform.
+
+The deployment provided the central infrastructure required for:
+
+- Endpoint monitoring
+- Log ingestion
+- Security-event analysis
+- Threat detection
+- Alert generation
+- Threat hunting
+- Incident investigation
+
+Wazuh agents were configured on monitored endpoints to forward security telemetry to the Wazuh Manager.
+
+## Validation
+
+Deployment validation included confirming:
+
+- Wazuh services were operational
+- The Wazuh Dashboard was accessible
+- Endpoint agents were registered
+- Agents were communicating with the manager
+- Security events were visible within Wazuh
+
+## Evidence
+
+The accompanying evidence PDF contains screenshots demonstrating the SIEM deployment, configuration, agent connectivity, and operational Wazuh environment.
+
+## Outcome
+
+A functioning centralized SIEM environment was successfully established for the remaining threat-detection and incident-response activities.
