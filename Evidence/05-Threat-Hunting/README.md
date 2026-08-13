@@ -1,86 +1,102 @@
-# Threat Hunting Evidence
+# Incident Response Evidence
 
 ## Overview
 
-This section documents threat hunting and security-event investigation performed using Wazuh.
+This section documents the incident-response process applied to security events generated and investigated during the SOC and SIEM project.
 
 ## Objective
 
-The objective was to move beyond individual alerts and investigate related activity across endpoints, accounts, timestamps, and security events.
+The objective was to demonstrate how detected security events can progress from SIEM alerts into structured investigation and response activities.
 
-## Threat Hunting Activities
+## Incident Response Lifecycle
 
-Activities included:
+The project followed the following lifecycle:
 
-- Reviewing Wazuh security alerts
-- Filtering events by rule ID
-- Filtering by endpoint and user
-- Reviewing authentication failures
-- Investigating privileged activity
-- Reviewing account modifications
-- Correlating related security events
-- Establishing event timelines
-- Validating alerts against endpoint evidence
+1. Identification
+2. Analysis
+3. Containment
+4. Eradication
+5. Recovery
+6. Lessons Learned
 
-## Rule-Based Investigation
+## Identification
 
-Wazuh rule IDs were used to isolate relevant events.
+Wazuh alerts were reviewed to identify security-relevant activity including:
 
-For example:
+- Repeated authentication failures
+- Privileged logons
+- Linux sudo-to-root activity
+- Account creation and modification
+- Administrative group changes
+- Controlled data-transfer activity
 
-Rule ID: 5402
+## Analysis
 
-Description:
-Successful sudo to ROOT executed.
+Relevant security events were correlated using:
 
-Filtering on specific rules allowed security-relevant events to be separated from unrelated telemetry.
+- Wazuh rule IDs
+- Windows Security Event IDs
+- Linux journal and audit records
+- User information
+- Agent information
+- Timestamps
+- Authentication activity
+- Privilege-related events
 
-## Authentication Investigation
+## Containment
 
-Authentication activity was reviewed to identify:
+Potential containment actions for a confirmed incident include:
 
-- Failed authentication attempts
-- Successful authentication
-- Repeated login activity
-- SSH-related events
-- Associated users and endpoints
+- Isolating affected endpoints
+- Disabling suspicious accounts
+- Terminating unauthorized sessions
+- Restricting malicious network activity
+- Preserving security evidence
 
-## Privilege Investigation
+During the controlled lab exercise, test activity was stopped after detection and validation.
 
-Privilege-related events from Windows and Linux systems were reviewed to identify elevated access and determine whether the activity was expected.
+## Eradication
 
-## Event Correlation
+Potential eradication actions include:
 
-Related events were correlated using:
+- Removing unauthorized accounts
+- Removing unauthorized administrative privileges
+- Removing malicious processes or persistence
+- Correcting insecure configurations
+- Resetting compromised credentials
 
-- Timestamp
-- Agent
-- IP address
-- User
-- Rule ID
-- Windows Event ID
-- Authentication information
-- Privilege activity
-- Account modifications
+## Recovery
 
-## Investigation Workflow
+Recovery activities include:
 
-The threat-hunting workflow followed:
+- Validating endpoint security
+- Restoring required services
+- Confirming legitimate account access
+- Verifying secure configurations
+- Continuing enhanced Wazuh monitoring
 
-1. Identify the alert.
-2. Review severity and affected endpoint.
-3. Filter relevant Wazuh events.
-4. Review normalized event information.
-5. Validate against endpoint evidence.
-6. Correlate related activity.
-7. Establish a timeline.
-8. Determine the significance of the activity.
-9. Document the findings.
+## Lessons Learned
+
+The exercise demonstrated the importance of:
+
+- Centralized security logging
+- SIEM alert filtering
+- Authentication-event correlation
+- Privileged-access monitoring
+- Rapid investigation of administrative changes
+- Endpoint validation of SIEM alerts
+- Continuous improvement of detection rules
+
+## Incident Response Workflow
+
+Alert → Triage → Investigation → Correlation → Containment → Eradication → Recovery → Lessons Learned
 
 ## Evidence
 
-The accompanying evidence PDF contains screenshots demonstrating Wazuh Threat Hunting, filtering, authentication analysis, privilege investigation, and event correlation.
+The accompanying evidence PDF contains screenshots supporting the identification, investigation, correlation, and validation stages of the incident-response workflow.
+
+Containment, eradication, recovery, and lessons-learned procedures are documented as response actions based on the controlled lab scenarios.
 
 ## Outcome
 
-The exercise demonstrated how SIEM telemetry can be systematically investigated to determine the context and significance of security alerts.
+The incident-response phase demonstrated how Wazuh alerts and endpoint telemetry can be transformed into a structured SOC investigation and response process.
